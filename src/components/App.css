@@ -1,0 +1,64 @@
+html, body {
+  margin:0;
+  padding:0;
+  overflow:hidden
+
+}
+body{
+  background: lightblue;
+}
+
+svg {
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+}
+
+
+.hoverFolder:hover{
+  fill: grey;
+  cursor: pointer;
+}
+
+.hoverFolder{
+  font-family: 'Dosis', sans-serif;
+}
+
+.icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  stroke-width: 0;
+  stroke: currentColor;
+  fill: currentColor;
+}
+
+.starterSvg{
+  max-width:1000px;
+
+  display: block;
+  margin: auto
+}
+
+.clickedSvg{
+  max-width:100%;
+
+  display: block;
+  margin: auto
+}
+
+.clickedSvgSmall{
+  height:100%;
+  width:100%;
+  display: block;
+  margin: auto;
+
+}
+
+#svg{
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    transition: all 1s ease;
+}
