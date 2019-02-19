@@ -10,7 +10,7 @@ class Desk extends React.Component{
   state={cards: false, clicked: false};
 
 
-  /*componentDidMount(){
+  componentDidMount(){
     var tl = new TimelineMax();
     var bgd = $('#background rect');
     var table = $('#table_legs, #table');
@@ -24,14 +24,14 @@ class Desk extends React.Component{
     tl.from(bgd, 0.1, {opacity:0, scale:0, transformOrigin: 'center center'})
         .staggerFrom(whiteboard, .2, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Back.easeOut}, 0.2)
         .staggerFrom(name, .5, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Back.easeOut}, 0.2)
-        .staggerFrom(developer, .5, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Back.easeOut}, 0.2)
+        .staggerFrom(developer, .1, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 0.05)
         .staggerFrom(table, .5, {y:"-=200", opacity: 0, ease: Elastic.easeOut}, 0.3)
         .staggerFrom(computer, .5, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Back.easeOut}, 0.2)
         .staggerFrom(folder, .5, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 0.2);
     tl.from(bgd, 0.1, {opacity:0, scale:0, transformOrigin: 'center center'})
         .staggerFrom(github, .7, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 1)
         .staggerFrom(linkedin, .7, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 1);
-  }*/
+  }
 
   onClick = () => {
     var folderFront = $('#panel > *');

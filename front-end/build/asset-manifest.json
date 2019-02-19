@@ -1,0 +1,23 @@
+{
+  "main.css": "/static/css/main.4c315971.chunk.css",
+  "main.js": "/static/js/main.3da89de9.chunk.js",
+  "main.js.map": "/static/js/main.3da89de9.chunk.js.map",
+  "runtime~main.js": "/static/js/runtime~main.fdfcfda2.js",
+  "runtime~main.js.map": "/static/js/runtime~main.fdfcfda2.js.map",
+  "static/js/2.67dd9860.chunk.js": "/static/js/2.67dd9860.chunk.js",
+  "static/js/2.67dd9860.chunk.js.map": "/static/js/2.67dd9860.chunk.js.map",
+  "index.html": "/index.html",
+  "precache-manifest.04962ca1440e4126df1e874c86af6796.js": "/precache-manifest.04962ca1440e4126df1e874c86af6796.js",
+  "service-worker.js": "/service-worker.js",
+  "static/css/main.4c315971.chunk.css.map": "/static/css/main.4c315971.chunk.css.map",
+  "static/media/campusForSale.png": "/static/media/campusForSale.287b385c.png",
+  "static/media/concomp.png": "/static/media/concomp.bb60398c.png",
+  "static/media/github.png": "/static/media/github.b2ec40a4.png",
+  "static/media/language.png": "/static/media/language.cf16b66a.png",
+  "static/media/poliTweet.png": "/static/media/poliTweet.2f55b383.png",
+  "static/media/portfolio.png": "/static/media/portfolio.587846d8.png",
+  "static/media/sigmaChi.png": "/static/media/sigmaChi.6d07b312.png",
+  "static/media/skills.png": "/static/media/skills.1dd55a6d.png",
+  "static/media/streamy.png": "/static/media/streamy.bd9810b5.png",
+  "static/media/theHive.png": "/static/media/theHive.381b1cd9.png"
+}
