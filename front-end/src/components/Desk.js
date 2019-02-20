@@ -10,7 +10,7 @@ class Desk extends React.Component{
   state={cards: false, clicked: false};
 
 
-  /*componentDidMount(){
+  componentDidMount(){
     var tl = new TimelineMax();
     var bgd = $('#background rect');
     var table = $('#table_legs, #table');
@@ -31,7 +31,7 @@ class Desk extends React.Component{
     tl.from(bgd, 0.1, {opacity:0, scale:0, transformOrigin: 'center center'})
         .staggerFrom(github, .7, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 1)
         .staggerFrom(linkedin, .7, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 1);
-  }*/
+  }
 
   onClick = () => {
     var folderFront = $('#panel > *');
