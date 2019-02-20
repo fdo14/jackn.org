@@ -49,7 +49,7 @@ body {
 }
 
 [class*="cardTopBottom-"]:not([class*="cardTopBottom-0"]) {
-  background-color: #131b24;
+  background-color: #1a2128;
   background-size: auto 85%;
   background-repeat: no-repeat;
   background-position: center center;
