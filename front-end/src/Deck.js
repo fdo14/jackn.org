@@ -67,23 +67,15 @@ const renderGlobe = (i) => {
     return(
       <img id={`globe${i}`} src={Web} onClick={() => window.open(webLinks[i])} className="topLink" onMouseEnter={() => onMouseOverGlobe(i)} onMouseLeave={() => onMouseExitGlobe(i)}/>
     );
-  } else {
-    return(
-      <div className="filler"></div>
-    );
   }
 }
 
 const renderGitHub = (i) => {
-  if(githubLinks[i] && webLinks[i]){
+
     return(
       <img id={`githubCard${i}`} src={GitHub} onClick={() => window.open(githubLinks[i])} className="topLinkLeft" onMouseEnter={() => onMouseOverGithub(i)} onMouseLeave={() => onMouseExitGithub(i)}/>
-    )
-  } else if(githubLinks[i] && !webLinks[i]){
-    return(
-      <img id={`githubCard${i}`} src={GitHub} onClick={() => window.open(githubLinks[i])} className="topLinkLeftShifted" onMouseEnter={() => onMouseOverGithub(i)} onMouseLeave={() => onMouseExitGithub(i)}/>
-    )
-  }
+    );
+
 }
 
 const onMouseExitGithub = (i) => {
