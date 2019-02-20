@@ -17,6 +17,7 @@ const credentials = {
 	ca: ca
 };
 
+app.all('*', ensureSecure); // at top of routing calls
 
 app.use(express.static(path.join(__dirname, 'build')));
 
@@ -28,6 +29,7 @@ app.get('/*', function (req, res) {
 const httpServer = http.createServer(app);
 const httpsServer = https.createServer(credentials, app);
 
+
 httpServer.listen(80, () => {
 	console.log('HTTP Server running on port 80');
 });
@@ -35,3 +37,13 @@ httpServer.listen(80, () => {
 httpsServer.listen(443, () => {
 	console.log('HTTPS Server running on port 443');
 });
+
+function ensureSecure(req, res, next){
+  if(req.secure){
+    // OK, continue
+    return next();
+  };
+  // handle port numbers if you need non defaults
+  // res.redirect('https://' + req.host + req.url); // express 3.x
+  res.redirect('https://' + req.hostname + req.url); // express 4.x
+}
