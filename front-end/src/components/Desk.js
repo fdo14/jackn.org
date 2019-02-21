@@ -1,13 +1,33 @@
 import React from 'react';
 import './App.css';
 import {TimelineMax, TweenLite, TweenMax} from "gsap/TweenMax";
-import {Elastic, Back, Power1, Power2, Linear} from "gsap/all";
+import {Elastic, Back, Power1, Power2, Linear, Bounce} from "gsap/all";
 import $ from "jquery";
 
 import Deck from '../Deck.js';
 
+
+var folderTl = new TimelineMax({repeat: -1, repeatDelay: 1.5});
+var bounceFolder = {
+  start: function(){
+    folderTl.add(TweenMax.to('#folder', .5, {y:120, ease:Power2.easeOut}));
+    folderTl.add(TweenMax.to('#folder', 1.5, {y:150, ease:Bounce.easeOut, delay:0 }));
+  },
+  stop: function(){
+    folderTl.stop();
+  },
+  resume: function(){
+    folderTl.resume();
+  },
+  kill: function(){
+    folderTl.kill();
+  }
+};
+
 class Desk extends React.Component{
-  state={cards: false, clicked: false};
+  state={cards: false, clicked: false, hover: false};
+
+
 
 
   componentDidMount(){
@@ -31,6 +51,8 @@ class Desk extends React.Component{
     tl.from(bgd, 0.1, {opacity:0, scale:0, transformOrigin: 'center center'})
         .staggerFrom(github, .7, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 1)
         .staggerFrom(linkedin, .7, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 1);
+
+        bounceFolder.start();
   }
 
   onClick = () => {
@@ -62,21 +84,19 @@ class Desk extends React.Component{
     var folderFront = $('#panel > *');
     TweenLite.to(folderFront, 1.5, {x:2500, y:500});
     this.setState({clicked: true});
-
+    bounceFolder.kill();
 
 
   }
 
   onMouseOver = () => {
     if(!this.state.clicked){
-      var tl = new TimelineMax({repeat:-1,repeatDelay:2})
+      var tl = new TimelineMax()
       .to('#folder',0.4,{rotation:10})
       .to('#folder',7,{rotation:0, ease:Elastic.easeOut.config(0.9,0.1)});
-      setTimeout(function() { //Start the timer
-        tl.kill();
-    }, 4000)
 
-      this.setState({clicked: true});
+      bounceFolder.stop();
+      this.setState({hover: true});
     }
   }
 
@@ -99,7 +119,9 @@ class Desk extends React.Component{
   }
 
   onMouseExit = () => {
-    this.setState({clicked: false});
+    if(!this.state.clicked){
+      bounceFolder.resume();
+    }
   }
 
   renderCards(){
