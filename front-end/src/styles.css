@@ -34,7 +34,7 @@ body {
 }
 
 
-[class*="cardTopBottom-0"]{
+[class*="cardTopBottom-0"],[class*="cardTopBottom-1"]{
   background-color: #FB5829 ;
   background-size: auto 85%;
   background-repeat: no-repeat;
@@ -48,7 +48,7 @@ body {
   box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3);
 }
 
-[class*="cardTopBottom-"]:not([class*="cardTopBottom-0"]) {
+[class*="cardTopBottom-"]:not([class*="cardTopBottom-0"]):not([class*="cardTopBottom-1"]) {
   background-color: #1a2128;
   background-size: auto 85%;
   background-repeat: no-repeat;

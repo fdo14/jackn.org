@@ -17,6 +17,7 @@ import SigmaChi from './img/sigmaChi.png';
 import Streamy from './img/streamy.png';
 import Portfolio from './img/portfolio.png';
 import Skills from './img/skills.png';
+import Edu from './img/edu.png';
 
 import Web from './img/language.png';
 import GitHub from './img/github.png';
@@ -24,6 +25,7 @@ import Home from './img/house.png';
 
 const cards = [
   Skills,
+  Edu,
   Portfolio,
   Streamy,
   SigmaChi,
@@ -37,6 +39,7 @@ const webLinks = [
   "",
   "",
   "",
+  "",
   "https://www.sigmachiumass.com/about-us",
   "https://blogs.umass.edu/Techbytes/2015/10/26/hackumass-2015/",
   "",
@@ -45,6 +48,7 @@ const webLinks = [
 ]
 
 const githubLinks = [
+  "",
   "",
   "https://github.com/fdo14/PortfolioTemplate",
   "https://github.com/fdo14/twitch-clone",
@@ -160,7 +164,7 @@ const Deck = (thots) => {
     tl.to('#svg', 1.2, {attr:{ viewBox:"0 -250 1250 1250"}});
     var folderFront = $('#panel > *');
     TweenLite.to(folderFront, 1.5, {x:0, y:0});
-    TweenLite.to('#projects', 1.5, {x:0, y:325});
+    TweenLite.to('#projects', 1.5, {x:60, y:350});
   }
 
 
@@ -176,7 +180,7 @@ const Deck = (thots) => {
       const isGone = gone.has(index)
       const x = isGone ? (200 + window.innerWidth) * dir : down ? xDelta : 0 // When a card is gone it flys out left or right, otherwise goes back to zero
       const rot = xDelta / 100 + (isGone ? dir * 10 * velocity : 0) // How much the card tilts, flicking it harder makes it rotate faster
-      const scale = down ? 1.1 : 1 // Active cards lift up a bit
+      const scale = down ? 1.2 : 1 // Active cards lift up a bit
       return { x, rot, scale, delay: undefined, config: { friction: 50, tension: down ? 800 : isGone ? 200 : 500 } }
     })
     if (!down && gone.size === cards.length) setTimeout(() => gone.clear() || set(i => to(i)), 600)
