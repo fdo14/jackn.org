@@ -1,0 +1,53 @@
+.card1,
+.card2,
+.card3,
+.card4 {
+  position: absolute;
+  border-radius: 5px;
+  background-size: cover;
+
+  background-repeat: no-repeat;
+  will-change: transform;
+}
+
+.container {
+  margin-bottom: 200px;
+  margin-left: 50px;
+}
+
+@media screen and (min-width: 717px) {
+  .container {
+    margin-bottom: 150px;
+    margin-left: 150px;
+  }
+}
+@media screen and (max-width: 717px) {
+  .container{
+    margin-bottom: 25vw;
+    margin-left: 50px;
+  }
+}
+
+
+
+
+.card1 {
+  width: calc(100vw/2.65);
+  height: calc(100vw/2.65);
+
+  max-width: 250px;
+  max-height: 250px;
+  background-image: url(./computer.png);
+}
+
+
+
+
+.card4 {
+  width: calc(100vw/8);
+  height: calc(100vw/2.65);
+
+  max-width: 100px;
+  max-height: 250px;
+  background-image: url(./jack.png);
+}

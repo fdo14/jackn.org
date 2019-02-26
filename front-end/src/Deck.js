@@ -6,6 +6,8 @@ import './styles.css'
 import ReactDOM from 'react-dom';
 import {TimelineMax, TweenLite, TweenMax} from "gsap/TweenMax";
 import {Elastic, Back, Power1, Power2, Linear} from "gsap/all";
+import $ from "jquery";
+
 
 import TheHive from './img/theHive.png';
 import Concomp from './img/concomp.png';
@@ -18,6 +20,7 @@ import Skills from './img/skills.png';
 
 import Web from './img/language.png';
 import GitHub from './img/github.png';
+import Home from './img/house.png';
 
 const cards = [
   Skills,
@@ -71,11 +74,26 @@ const renderGlobe = (i) => {
 }
 
 const renderGitHub = (i) => {
-
+  if(githubLinks[i]){
     return(
       <img id={`githubCard${i}`} src={GitHub} onClick={() => window.open(githubLinks[i])} className="topLinkLeft" onMouseEnter={() => onMouseOverGithub(i)} onMouseLeave={() => onMouseExitGithub(i)}/>
     );
+  }
+}
 
+
+const renderHome = (i) => {
+  return(
+    <img id={`home${i}`} src={Home} className="bottomLink"  onClick={zoomOut} onMouseEnter={() => onMouseOverHome(i)} onMouseLeave={() => onMouseExitHome(i)}/>
+  );
+}
+
+const zoomOut = (props) => {
+  console.log(props);
+  var tl = new TimelineMax();
+    tl.to('#svg', 1.2, {attr:{ viewBox:"0 -250 1250 1250"}});
+  var folderFront = $('#panel > *');
+    TweenLite.to(folderFront, 1.5, {x:0, y:0});
 }
 
 const onMouseExitGithub = (i) => {
@@ -104,6 +122,24 @@ const onMouseExitGlobe = (i) => {
   }, 4000)
 }
 
+const onMouseOverHome = (i) => {
+  var tl = new TimelineMax({repeat:-1,repeatDelay:2})
+  .to(`#home${i}`, .5, { scaleX:1.5, scaleY:1.5})
+  .to(`#home${i}`,0.4,{rotation:10})
+  .to(`#home${i}`,7,{rotation:0, ease:Elastic.easeOut.config(0.9,0.1)});
+  setTimeout(function() { //Start the timer
+    tl.kill();
+  }, 4000)
+}
+
+const onMouseExitHome = (i) => {
+  var tl = new TimelineMax()
+  .to(`#home${i}`, .5, { scaleX:1, scaleY:1})
+  setTimeout(function() { //Start the timer
+    tl.kill();
+  }, 4000)
+}
+
 
 // These two are just helpers, they curate spring data, values that are later being interpolated into css
 const to = i => ({ x: 0, y: i * -4, scale: 1, rot: -10 + Math.random() * 20, delay: i * 100 })
@@ -111,7 +147,23 @@ const from = i => ({ x: 0, y: i * -4, rot: 0, scale: 1.5, y: -1000 })
 // This is being used down there in the view, it interpolates rotation and scale into a css transform
 const trans = (r, s) => `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg) rotateZ(${r}deg) scale(${s})`
 
-const Deck = () => {
+const Deck = (thots) => {
+  const renderHome = (i) => {
+    return(
+      <img id={`home${i}`} src={Home} className="bottomLink"  onClick={zoomOut} onMouseEnter={() => onMouseOverHome(i)} onMouseLeave={() => onMouseExitHome(i)}/>
+    );
+  }
+
+  const zoomOut = () => {
+    thots.onHomeClick();
+    var tl = new TimelineMax();
+    tl.to('#svg', 1.2, {attr:{ viewBox:"0 -250 1250 1250"}});
+    var folderFront = $('#panel > *');
+    TweenLite.to(folderFront, 1.5, {x:0, y:0});
+    TweenLite.to('#projects', 1.5, {x:0, y:325});
+  }
+
+
   const [gone] = useState(() => new Set()) // The set flags all the cards that are flicked out
   const [props, set] = useSprings(cards.length, i => ({ ...to(i), from: from(i) })) // Create a bunch of springs using the helpers above
   // Create a gesture, we're interested in down-state, delta (current-pos - click-pos), direction and velocity
@@ -136,10 +188,12 @@ const Deck = () => {
       <animated.div className={`cardTopBottom-${i}`} {...bind(i)} style={{ transform: interpolate([rot, scale], trans), backgroundImage: `url(${cards[i]})` }} >
         {renderGlobe(i)}
         {renderGitHub(i)}
+        {renderHome(i)}
       </animated.div>
     </animated.div>
 
   ))
 }
+
 
 export default Deck;
