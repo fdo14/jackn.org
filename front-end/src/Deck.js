@@ -9,15 +9,16 @@ import {Elastic, Back, Power1, Power2, Linear} from "gsap/all";
 import $ from "jquery";
 
 
-import TheHive from './img/theHive.png';
-import Concomp from './img/concomp.png';
-import PoliTweet from './img/poliTweet.png';
-import CampusForSale from './img/campusForSale.png';
-import SigmaChi from './img/sigmaChi.png';
-import Streamy from './img/streamy.png';
-import Portfolio from './img/portfolio.png';
-import Skills from './img/skills.png';
-import Edu from './img/edu.png';
+import TheHive from './img/cards/theHive.png';
+import Concomp from './img/cards/concomp.png';
+import PoliTweet from './img/cards/poliTweet.png';
+import CampusForSale from './img/cards/campusForSale.png';
+import SigmaChi from './img/cards/sigmaChi.png';
+import Streamy from './img/cards/streamy.png';
+import Portfolio from './img/cards/portfolio.png';
+import Lissen from './img/cards/lissen.png';
+import Skills from './img/cards/skills.png';
+import Edu from './img/cards/edu.png';
 
 import Web from './img/language.png';
 import GitHub from './img/github.png';
@@ -26,6 +27,7 @@ import Home from './img/house.png';
 const cards = [
   Skills,
   Edu,
+  Lissen,
   Portfolio,
   Streamy,
   SigmaChi,
@@ -40,6 +42,7 @@ const webLinks = [
   "",
   "",
   "",
+  "",
   "https://www.sigmachiumass.com/about-us",
   "https://blogs.umass.edu/Techbytes/2015/10/26/hackumass-2015/",
   "",
@@ -50,6 +53,7 @@ const webLinks = [
 const githubLinks = [
   "",
   "",
+  "https://github.com/fdo14/WifiChangerApp",
   "https://github.com/fdo14/PortfolioTemplate",
   "https://github.com/fdo14/twitch-clone",
   "https://github.com/fdo14/sigma-chi",
