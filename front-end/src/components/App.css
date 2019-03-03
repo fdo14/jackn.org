@@ -91,3 +91,11 @@ body{
 .hidden{
   visibility: hidden
 }
+
+.clickyBoi{
+  transition: fill 1s;
+}
+
+.clickyBoi:hover{
+  fill: #1a2128;
+}

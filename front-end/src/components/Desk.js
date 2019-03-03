@@ -144,10 +144,6 @@ class Desk extends React.Component{
   }, 4000)
   }
 
-  onMouseLink = () => {
-    var tl = new TimelineMax()
-    .to('#linkSite', .5, { scaleX:1.1, scaleY:1.1})
-  }
 
   onMouseExitButton = (id) =>{
     var tl = new TimelineMax()
@@ -573,7 +569,7 @@ class Desk extends React.Component{
           105 69 0 8 5 15 11 15 6 0 9 6 6 13 -2 6 -14 11 -25 9 -12 -2 -22 2 -22 7 0
           15 -35 14 -49 -2z m49 -46 c0 -12 -49 -55 -56 -49 -11 12 26 67 41 62 8 -4 15
           -9 15 -13z"/>
-          <g transform="translate(3400,-30) " fill="#FB5829" stroke="none" id="linkSite" onClick={() => window.open('http://jackndemos.com')} onMouseEnter={this.onMouseLink} onMouseLeave={() => this.onMouseExitButton('#linkSite')}>
+          <g className="clickyBoi" transform="translate(3400,-30) " fill="#FB5829" stroke="none" id="linkSite" onClick={() => window.open('http://jackndemos.com')} onMouseEnter={this.onMouseLink} onMouseLeave={() => this.onMouseExitButton('#linkSite')}>
             <path d="M670 428 c-25 -41 -80 -192 -80 -219 0 -28 19 -23 31 9 l10 27 21
             -27 c21 -30 48 -37 48 -14 0 7 -6 19 -14 25 -12 10 -9 17 15 44 45 49 31 95
             -20 67 -19 -10 -20 -9 -11 16 6 14 17 36 25 47 17 25 20 57 5 57 -6 0 -19 -15
