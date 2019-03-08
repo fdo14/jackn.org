@@ -46,18 +46,15 @@ class Desk extends React.Component{
     var github = $('#github');
     var linkedin = $('#linkedin');
     var learnMore = $('#learnMore');
+    var array = [github, linkedin, learnMore]
     tl.from(bgd, 0.1, {opacity:0, scale:0, transformOrigin: 'center center'})
         .staggerFrom(whiteboard, .2, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Back.easeOut}, 0.2)
-        .staggerFrom(name, .5, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Back.easeOut}, 0.2)
-        .staggerFrom(developer, .1, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 0.05)
+        .staggerFrom([name, developer], .5, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Back.easeOut}, 0.2)
         .staggerFrom(table, .5, {y:"-=200", opacity: 0, ease: Elastic.easeOut}, 0.3)
         .staggerFrom(computer, .5, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Back.easeOut}, 0.2)
         .staggerFrom(folder, .5, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 0.2);
     tl.from(bgd, 0.1, {opacity:0, scale:0, transformOrigin: 'center center'})
-        .staggerFrom(github, .7, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 0)
-        .staggerFrom(linkedin, .7, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 0)
-        .staggerFrom(learnMore, .7, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 0);
-
+        .staggerFrom(array, .7, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut}, 0);
         bounceFolder.start();
     ellipsesTl.from(bgd, 0.1, {opacity:0, scale:0, transformOrigin: 'center center'})
         .staggerFrom(ellipses, .7, {opacity: 0, scale: 0, transformOrigin: 'center center', ease: Elastic.easeOut }, .2)
