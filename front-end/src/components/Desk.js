@@ -1,7 +1,7 @@
 import React from 'react';
 import './App.css';
 import {TimelineMax, TweenLite, TweenMax} from "gsap/TweenMax";
-import {Elastic, Back, Power1, Power2, Linear, Bounce} from "gsap/all";
+import {Elastic, Back, Power2, Bounce} from "gsap/all";
 import $ from "jquery";
 
 import Deck from '../Deck.js';
@@ -84,17 +84,13 @@ class Desk extends React.Component{
       }));
     }
 
-
     setTimeout(function() { //Start the timer
       this.setState({cards: true}) //After 1 second, set render to true
-  }.bind(this), 1500)
+    }.bind(this), 1500)
 
-    var folderFront = $('#panel > *');
     TweenLite.to([folderFront, '#projects'], 1.5, {x:2500, y:500});
     this.setState({clicked: true});
     bounceFolder.kill();
-
-
   }
 
   onHomeClick = () => {
@@ -105,8 +101,8 @@ class Desk extends React.Component{
 
   onMouseOver = () => {
     if(!this.state.clicked){
-      var tl = new TimelineMax()
-      .to('#folder',0.4,{rotation:10})
+      var tl = new TimelineMax();
+      tl.to('#folder',0.4,{rotation:10})
       .to('#folder',7,{rotation:0, ease:Elastic.easeOut.config(0.9,0.1)});
 
       bounceFolder.stop();
@@ -146,8 +142,8 @@ class Desk extends React.Component{
 
 
   onMouseExitButton = (id) =>{
-    var tl = new TimelineMax()
-    .to(id, .5, { scaleX:1, scaleY:1});
+    var tl = new TimelineMax();
+    tl.to(id, .5, { scaleX:1, scaleY:1});
   }
 
   onMouseExit = () => {
@@ -204,65 +200,74 @@ class Desk extends React.Component{
     }
   }
 
-  returnHome = () => {
-    if(this.state.clickedLearnMore){
-      this.setState({clickedLearnMore: false})
-      var computer = $('#computer');
-      var folder = $('#folder');
-      var name = $('#name > *');
-      var developer = $('#developer > *');
-      var github = $('#github');
-      var linkedin = $('#linkedin');
-      var learnMore = $('#learnMore');
-      var description = $('#description');
-      var email = $('#email');
-      var arrayDelete = [description, email];
-      var arrayCreate = [computer, name, developer, github, linkedin];
-      var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  returnHome = (event) => {
+    var noRedirect = '#whiteboard';
+    var noRedirectMoji = '.bitmoji';
 
-      var tl = new TimelineMax();
-        tl.to(arrayDelete,1,{scale: 0,opacity: 0, x: -2500, y:0});
-        tl.to('#svg', 1.2, {attr:{ viewBox:"0 -250 1250 1250"}});
-        tl.to(arrayCreate,1,{scale: 1,opacity: 1, x: 0, y:0});
-        tl.to('#folder',.1,{scale: .6,opacity: 1, x: 400, y:120});
-        tl.to('#learnMore',.1,{scale: 1,opacity: 1, x: -500, y:0});
-        if(w >= 726){
-          document.getElementById("svg").classList.remove('clickedSvgBoard');
-          document.getElementById("svg").classList.add('starterSvg');
+    if (!event.target.parentNode.matches(noRedirect) && !event.target.parentNode.parentNode.matches(noRedirectMoji)) {
+      console.log('Failed')
+      if(this.state.clickedLearnMore){
+        this.setState({clickedLearnMore: false})
+        var computer = $('#computer');
+        var name = $('#name > *');
+        var developer = $('#developer > *');
+        var github = $('#github');
+        var linkedin = $('#linkedin');
+        var description = $('#description');
+        var email = $('#email');
+        var arrayDelete = [description, email];
+        var arrayCreate = [computer, name, developer, github, linkedin];
+        var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+
+        var tl = new TimelineMax();
+          tl.to(arrayDelete,1,{scale: 0,opacity: 0, x: -2500, y:0});
+          tl.to('#svg', 1.2, {attr:{ viewBox:"0 -250 1250 1250"}});
+          tl.to(arrayCreate,1,{scale: 1,opacity: 1, x: 0, y:0});
+          tl.to('#folder',.1,{scale: .6,opacity: 1, x: 400, y:120});
+          tl.to('#learnMore',.1,{scale: 1,opacity: 1, x: -500, y:0});
+          if(w >= 726){
+            document.getElementById("svg").classList.remove('clickedSvgBoard');
+            document.getElementById("svg").classList.add('starterSvg');
+          }
         }
       }
   }
 
+
+
+
+
   render(){
+
     return(
-      <React.Fragment>
+      <React.Fragment >
       <div style={{textAlign: "center"}} onClick={this.returnHome}>
-        <svg id="svg" class="starterSvg" viewBox="0 0 1200 900" >
+        <svg id="svg" className="starterSvg" viewBox="0 0 1200 900" >
         <g transform="translate(0,200)">
         <defs>
           <linearGradient id="a">
-           <stop stop-color="#b8b8b8" offset="0"/>
-           <stop stop-color="#e3e3e3" offset=".5"/>
-           <stop stop-color="#b9b9b9" offset="1"/>
+           <stop stopColor="#b8b8b8" offset="0"/>
+           <stop stopColor="#e3e3e3" offset=".5"/>
+           <stop stopColor="#b9b9b9" offset="1"/>
           </linearGradient>
           <linearGradient id="e" x1="125.89" x2="569.35" y1="286.38" y2="130.07" gradientUnits="userSpaceOnUse">
-           <stop stop-color="#867850" offset="0"/>
-           <stop stop-color="#a08872" offset=".35474"/>
-           <stop stop-color="#867850" offset="1"/>
+           <stop stopColor="#867850" offset="0"/>
+           <stop stopColor="#a08872" offset=".35474"/>
+           <stop stopColor="#867850" offset="1"/>
           </linearGradient>
           <linearGradient id="d" x1="412.44" x2="411.64" y1="330.39" y2="335.09" gradientUnits="userSpaceOnUse" xlinkHref="#a"/>
           <linearGradient id="c" x1="412.44" x2="411.64" y1="330.39" y2="335.09" gradientTransform="matrix(.90747 -.42013 .42013 .90747 -96.493 204.08)" gradientUnits="userSpaceOnUse" xlinkHref="#a"/>
           <linearGradient id="b" x1="412.44" x2="411.64" y1="330.39" y2="335.09" gradientTransform="matrix(-.96884 -.24771 .24771 -.96884 748.05 756.69)" gradientUnits="userSpaceOnUse" xlinkHref="#a"/>
          </defs>
 
-        <g transform="translate(-55, -300), scale(1.75,1.5)" stroke-linejoin="round" id="whiteboard" >
-          <path d="m135.56 97.776h473.25a3.828 3.828 0 0 1 3.828 3.828v236.86a3.828 3.828 0 0 1 -3.828 3.828h-473.25a3.828 3.828 0 0 1 -3.828 -3.828v-236.86a3.828 3.828 0 0 1 3.828 -3.828" fill="#EDCF94" stroke="#FFF" stroke-width=".2"/>
-          <path d="m149.75 109.51h444.87a3.828 3.828 0 0 1 3.828 3.828v205.28a3.828 3.828 0 0 1 -3.828 3.828h-444.87a3.828 3.828 0 0 1 -3.828 -3.828v-205.28a3.828 3.828 0 0 1 3.828 -3.828" fill="#FFF" stroke="#777" stroke-width=".2"/>
-          <path d="m397.66 328.23 30.171 3.838-0.79998 5.4618-30.018-4.881 0.64721-4.4188z" fill="url(#d)" stroke="#858585" stroke-width=".1"/>
-          <path d="m402.27 334.87 28.991-9.1927 1.5687 5.2925-29.291 8.1821-1.2691-4.2818z" fill="url(#c)" stroke="#858585" stroke-width=".1"/>
-          <path d="m444.09 340.19-28.28-11.192 2.128-5.0934 27.873 12.165-1.7216 4.1208z" fill="url(#b)" stroke="#858585" stroke-width=".1"/>
-          <path transform="rotate(2.4312)" d="m267.4 314.14h37.648v11.905h-37.648z" fill="#493a3d" stroke="#858585" stroke-width=".1"/>
-          <path d="m129.92 335.71h484.51v7.218h-484.51z" fill="#EDCF94" stroke="#777" stroke-width=".2"/>
+        <g transform="translate(-55, -300), scale(1.75,1.5)" strokeLinejoin="round" id="whiteboard" >
+          <path d="m135.56 97.776h473.25a3.828 3.828 0 0 1 3.828 3.828v236.86a3.828 3.828 0 0 1 -3.828 3.828h-473.25a3.828 3.828 0 0 1 -3.828 -3.828v-236.86a3.828 3.828 0 0 1 3.828 -3.828" fill="#EDCF94" stroke="#FFF" strokeWidth=".2"/>
+          <path d="m149.75 109.51h444.87a3.828 3.828 0 0 1 3.828 3.828v205.28a3.828 3.828 0 0 1 -3.828 3.828h-444.87a3.828 3.828 0 0 1 -3.828 -3.828v-205.28a3.828 3.828 0 0 1 3.828 -3.828" fill="#FFF" stroke="#777" strokeWidth=".2"/>
+          <path d="m397.66 328.23 30.171 3.838-0.79998 5.4618-30.018-4.881 0.64721-4.4188z" fill="url(#d)" stroke="#858585" strokeWidth=".1"/>
+          <path d="m402.27 334.87 28.991-9.1927 1.5687 5.2925-29.291 8.1821-1.2691-4.2818z" fill="url(#c)" stroke="#858585" strokeWidth=".1"/>
+          <path d="m444.09 340.19-28.28-11.192 2.128-5.0934 27.873 12.165-1.7216 4.1208z" fill="url(#b)" stroke="#858585" strokeWidth=".1"/>
+          <path transform="rotate(2.4312)" d="m267.4 314.14h37.648v11.905h-37.648z" fill="#493a3d" stroke="#858585" strokeWidth=".1"/>
+          <path d="m129.92 335.71h484.51v7.218h-484.51z" fill="#EDCF94" stroke="#777" strokeWidth=".2"/>
          </g>
 
          <g transform="translate(200,100) scale(.09,-.09)"
@@ -723,7 +728,7 @@ class Desk extends React.Component{
           </g>
 
          <g transform="translate(-40,-10)" onClick={() =>  window.open("https://github.com/fdo14")} onMouseEnter={this.onMouseOverGithub} onMouseLeave={() => this.onMouseExitButton('#github')} id="github">
-          <circle cx="50" cy="50" r="50" stroke="black" stroke-width="3" fill="#6e5494" transform="translate(270, 20)"/>
+          <circle cx="50" cy="50" r="50" stroke="black" strokeWidth="3" fill="#6e5494" transform="translate(270, 20)"/>
           <g transform="scale(.26,.26), translate(1050,140)">
              <path id="cat" d="m378.18 141.32l.28-1.389c-31.162-6.231-63.141-6.294-82.487-5.49 3.178-11.451 4.134-24.627 4.134-39.32 0-21.073-7.917-37.931-20.77-50.759 2.246-7.25 5.246-23.351-2.996-43.963 0 0-14.541-4.617-47.431 17.396-12.884-3.22-26.596-4.81-40.328-4.81-15.109 0-30.376 1.924-44.615 5.83-33.94-23.154-48.923-18.411-48.923-18.411-9.78 24.457-3.733 42.566-1.896 47.063-11.495 12.406-18.513 28.243-18.513 47.659 0 14.658 1.669 27.808 5.745 39.237-19.511-.71-50.323-.437-80.373 5.572l.276 1.389c30.231-6.046 61.237-6.256 80.629-5.522.898 2.366 1.899 4.661 3.021 6.879-19.177.618-51.922 3.062-83.303 11.915l.387 1.36c31.629-8.918 64.658-11.301 83.649-11.882 11.458 21.358 34.048 35.152 74.236 39.484-5.704 3.833-11.523 10.349-13.881 21.374-7.773 3.718-32.379 12.793-47.142-12.599 0 0-8.264-15.109-24.082-16.292 0 0-15.344-.235-1.059 9.562 0 0 10.267 4.838 17.351 23.019 0 0 9.241 31.01 53.835 21.061v32.032s-.943 11.33-11.33 15.105c0 0-6.137 4.249.475 6.606 0 0 28.792 2.361 28.792-21.238v-34.929s-1.142-13.852 5.663-18.667v57.371s-.47 13.688-7.551 18.881c0 0-4.723 8.494 5.663 6.137 0 0 19.824-2.832 20.769-25.961l.449-58.06h4.765l.453 58.06c.943 23.129 20.768 25.961 20.768 25.961 10.383 2.357 5.663-6.137 5.663-6.137-7.08-5.193-7.551-18.881-7.551-18.881v-56.876c6.801 5.296 5.663 18.171 5.663 18.171v34.929c0 23.6 28.793 21.238 28.793 21.238 6.606-2.357.474-6.606.474-6.606-10.386-3.775-11.33-15.105-11.33-15.105v-45.786c0-17.854-7.518-27.309-14.87-32.3 42.859-4.25 63.426-18.089 72.903-39.591 18.773.516 52.557 2.803 84.873 11.919l.384-1.36c-32.131-9.063-65.692-11.408-84.655-11.96.898-2.172 1.682-4.431 2.378-6.755 19.25-.80 51.38-.79 82.66 5.46z"/>
              <path id="face" fill="#F4CBB2" d="m258.19 94.132c9.231 8.363 14.631 18.462 14.631 29.343 0 50.804-37.872 52.181-84.585 52.181-46.721 0-84.589-7.035-84.589-52.181 0-10.809 5.324-20.845 14.441-29.174 15.208-13.881 40.946-6.531 70.147-6.531 29.07-.004 54.72-7.429 69.95 6.357z"/>
@@ -737,18 +742,18 @@ class Desk extends React.Component{
           </g>
 
           <g transform="translate(50,-10)" onClick={() =>  window.open("https://www.linkedin.com/in/jack-nichols-0a0660b0")} onMouseEnter={this.onMouseOverLinkedin} onMouseLeave={() => this.onMouseExitButton('#linkedin')} id="linkedin">
-           <circle cx="50" cy="50" r="50" stroke="black" stroke-width="3" fill="#4875B4" transform="translate(800, -100)"/>
+           <circle cx="50" cy="50" r="50" stroke="black" strokeWidth="3" fill="#4875B4" transform="translate(800, -100)"/>
            <g transform="scale(5,5), translate(158,-22)">
               <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8c0 .557-.447 1.008-1 1.008s-1-.45-1-1.008c0-.557.447-1.008 1-1.008s1 .452 1 1.008zm0 2h-2v6h2v-6zm3 0h-2v6h2v-2.861c0-1.722 2.002-1.881 2.002 0v2.861h1.998v-3.359c0-3.284-3.128-3.164-4-1.548v-1.093z"/>
             </g>
           </g>
 
           <g transform="translate(-475,0)" onClick={this.onLearnMoreClick} onMouseEnter={this.onMouseOverLearnMore} onMouseLeave={() => this.onMouseExitButton('#learnMore')} id="learnMore">
-           <circle cx="50" cy="50" r="50" stroke="black" stroke-width="3" fill="#FB5829" transform="translate(800, -100)"/>
+           <circle cx="50" cy="50" r="50" stroke="black" strokeWidth="3" fill="#FB5829" transform="translate(800, -100)"/>
            <g id="ellipses">
-             <circle cx="50" cy="50" r="8" stroke="#1a2128" stroke-width="3" fill="#1a2128" transform="translate(775, -100)"/>
-             <circle cx="50" cy="50" r="8" stroke="#1a2128" stroke-width="3" fill="#1a2128" transform="translate(800, -100)"/>
-             <circle cx="50" cy="50" r="8" stroke="#1a2128" stroke-width="3" fill="##1a2128" transform="translate(825, -100)"/>
+             <circle cx="50" cy="50" r="8" stroke="#1a2128" strokeWidth="3" fill="#1a2128" transform="translate(775, -100)"/>
+             <circle cx="50" cy="50" r="8" stroke="#1a2128" strokeWidth="3" fill="#1a2128" transform="translate(800, -100)"/>
+             <circle cx="50" cy="50" r="8" stroke="#1a2128" strokeWidth="3" fill="##1a2128" transform="translate(825, -100)"/>
             </g>
           </g>
 

@@ -1,11 +1,9 @@
-import { render } from 'react-dom'
 import React, { useState } from 'react'
 import { useSprings, animated, interpolate } from 'react-spring'
 import { useGesture } from 'react-with-gesture'
 import './styles.css'
-import ReactDOM from 'react-dom';
-import {TimelineMax, TweenLite, TweenMax} from "gsap/TweenMax";
-import {Elastic, Back, Power1, Power2, Linear} from "gsap/all";
+import {TimelineMax, TweenLite} from "gsap/TweenMax";
+import {Elastic} from "gsap/all";
 import $ from "jquery";
 
 
@@ -76,7 +74,7 @@ const onMouseOverGithub = (i) => {
 const renderGlobe = (i) => {
   if(webLinks[i]){
     return(
-      <img id={`globe${i}`} src={Web} onClick={() => window.open(webLinks[i])} className="topLink" onMouseEnter={() => onMouseOverGlobe(i)} onMouseLeave={() => onMouseExitGlobe(i)}/>
+      <img id={`globe${i}`} src={Web} onClick={() => window.open(webLinks[i])} className="topLink" onMouseEnter={() => onMouseOverGlobe(i)} onMouseLeave={() => onMouseExitGlobe(i)} alt=''/>
     );
   }
 }
@@ -84,24 +82,9 @@ const renderGlobe = (i) => {
 const renderGitHub = (i) => {
   if(githubLinks[i]){
     return(
-      <img id={`githubCard${i}`} src={GitHub} onClick={() => window.open(githubLinks[i])} className="topLinkLeft" onMouseEnter={() => onMouseOverGithub(i)} onMouseLeave={() => onMouseExitGithub(i)}/>
+      <img id={`githubCard${i}`} src={GitHub} onClick={() => window.open(githubLinks[i])} className="topLinkLeft" onMouseEnter={() => onMouseOverGithub(i)} onMouseLeave={() => onMouseExitGithub(i)} alt=''/>
     );
   }
-}
-
-
-const renderHome = (i) => {
-  return(
-    <img id={`home${i}`} src={Home} className="bottomLink"  onClick={zoomOut} onMouseEnter={() => onMouseOverHome(i)} onMouseLeave={() => onMouseExitHome(i)}/>
-  );
-}
-
-const zoomOut = (props) => {
-  console.log(props);
-  var tl = new TimelineMax();
-    tl.to('#svg', 1.2, {attr:{ viewBox:"0 -250 1250 1250"}});
-  var folderFront = $('#panel > *');
-    TweenLite.to(folderFront, 1.5, {x:0, y:0});
 }
 
 const onMouseExitGithub = (i) => {
@@ -158,7 +141,7 @@ const trans = (r, s) => `perspective(1500px) rotateX(30deg) rotateY(${r / 10}deg
 const Deck = (thots) => {
   const renderHome = (i) => {
     return(
-      <img id={`home${i}`} src={Home} className="bottomLink"  onClick={zoomOut} onMouseEnter={() => onMouseOverHome(i)} onMouseLeave={() => onMouseExitHome(i)}/>
+      <img id={`home${i}`} src={Home} className="bottomLink"  onClick={zoomOut} onMouseEnter={() => onMouseOverHome(i)} onMouseLeave={() => onMouseExitHome(i)} alt=''/>
     );
   }
 
