@@ -15,16 +15,19 @@ import SigmaChi from './img/cards/sigmaChi.png';
 import Streamy from './img/cards/streamy.png';
 import Portfolio from './img/cards/portfolio.png';
 import Lissen from './img/cards/lissen.png';
+import DD from './img/cards/d+d.png';
 import Skills from './img/cards/skills.png';
 import Edu from './img/cards/edu.png';
 
 import Web from './img/language.png';
 import GitHub from './img/github.png';
+import Dribble from './img/dribble.png';
 import Home from './img/house.png';
 
 const cards = [
   Skills,
   Edu,
+  DD,
   Lissen,
   Portfolio,
   Streamy,
@@ -35,9 +38,24 @@ const cards = [
   TheHive
 ]
 
+const dribbleLinks = [
+  "",
+  "",
+  "https://dribbble.com/shots/6172154-D-D-Health-App",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  "",
+  ""
+]
+
 const webLinks = [
   "",
   "",
+  "https://dd-health-app.herokuapp.com/",
   "",
   "http://www.jackndemos.com/frontendSites/portfolio/",
   "",
@@ -49,8 +67,9 @@ const webLinks = [
 ]
 
 const githubLinks = [
-  "",
-  "",
+  "https://github.com/fdo14",
+  "https://github.com/fdo14",
+  "https://github.com/fdo14/dd-health-app",
   "https://github.com/fdo14/WifiChangerApp",
   "https://github.com/fdo14/PortfolioTemplate",
   "https://github.com/fdo14/twitch-clone",
@@ -58,7 +77,7 @@ const githubLinks = [
   "https://github.com/fdo14/campus-forsale",
   "https://github.com/fdo14/politweet",
   "https://github.com/fdo14/ConcussionCompetencies",
-  "https://github.com/fdo14"
+  "https://github.com/fdo14/TheHive"
 ]
 
 const onMouseOverGithub = (i) => {
@@ -85,6 +104,32 @@ const renderGitHub = (i) => {
       <img id={`githubCard${i}`} src={GitHub} onClick={() => window.open(githubLinks[i])} className="topLinkLeft" onMouseEnter={() => onMouseOverGithub(i)} onMouseLeave={() => onMouseExitGithub(i)} alt=''/>
     );
   }
+}
+
+const renderDribble = (i) => {
+  if(dribbleLinks[i]){
+    return(
+      <img id={`dribble${i}`} src={Dribble} onClick={() => window.open(dribbleLinks[i])} className="bottomLinkLeft" onMouseEnter={() => onMouseOverDribble(i)} onMouseLeave={() => onMouseExitDribble(i)} alt=''/>
+    );
+  }
+}
+
+const onMouseOverDribble = (i) => {
+  var tl = new TimelineMax({repeat:-1,repeatDelay:2})
+  .to(`#dribble${i}`, .5, { scaleX:1.5, scaleY:1.5})
+  .to(`#dribble${i}`,0.4,{rotation:10})
+  .to(`#dribble${i}`,7,{rotation:0, ease:Elastic.easeOut.config(0.9,0.1)});
+  setTimeout(function() { //Start the timer
+    tl.kill();
+  }, 4000)
+}
+
+const onMouseExitDribble = (i) => {
+  var tl = new TimelineMax()
+  .to(`#dribble${i}`, .5, { scaleX:1, scaleY:1})
+  setTimeout(function() { //Start the timer
+    tl.kill();
+  }, 4000)
 }
 
 const onMouseExitGithub = (i) => {
@@ -180,6 +225,7 @@ const Deck = (thots) => {
         {renderGlobe(i)}
         {renderGitHub(i)}
         {renderHome(i)}
+        {renderDribble(i)}
       </animated.div>
     </animated.div>
 
