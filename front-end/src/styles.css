@@ -34,7 +34,21 @@ body {
 }
 
 
-[class*="cardTopBottom-0"],[class="cardTopBottom-1"]{
+[class="cardTopBottom-0"]{
+  background-color:#324051;
+  background-size: auto 85%;
+  background-repeat: no-repeat;
+  background-position: center center;
+  width: 45vh;
+  max-width: 300px;
+  height: 85vh;
+  max-height: 570px;
+  will-change: transform;
+  border-radius: 10px;
+  box-shadow: 0 12.5px 100px -10px rgba(50, 50, 73, 0.4), 0 10px 10px -10px rgba(50, 50, 73, 0.3);
+}
+
+[class="cardTopBottom-1"]{
   background-color: #FB5829 ;
   background-size: auto 85%;
   background-repeat: no-repeat;

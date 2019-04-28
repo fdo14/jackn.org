@@ -7,15 +7,16 @@ import {Elastic} from "gsap/all";
 import $ from "jquery";
 
 
-import TheHive from './img/cards/theHive.png';
+import TheHive from './img/cards/hive.png';
 import Concomp from './img/cards/concomp.png';
-import PoliTweet from './img/cards/poliTweet.png';
-import CampusForSale from './img/cards/campusForSale.png';
-import SigmaChi from './img/cards/sigmaChi.png';
-import Streamy from './img/cards/streamy.png';
-import Portfolio from './img/cards/portfolio.png';
-import Lissen from './img/cards/lissen.png';
-import DD from './img/cards/d+d.png';
+import PoliTweet from './img/cards/politweet.png';
+import CampusForSale from './img/cards/campus.png';
+import SickFit from './img/cards/sickfits.png';
+import Survvey from './img/cards/survvey.png';
+import Geopins from './img/cards/geopins.png';
+import AverageJoes from './img/cards/joes.png';
+import DD from './img/cards/dd.png';
+import Lissen from './img/cards/lissen.png'
 import Skills from './img/cards/skills.png';
 import Edu from './img/cards/edu.png';
 
@@ -27,18 +28,20 @@ import Home from './img/house.png';
 const cards = [
   Skills,
   Edu,
-  DD,
   Lissen,
-  Portfolio,
-  Streamy,
-  SigmaChi,
-  CampusForSale,
+  DD,
+  AverageJoes,
   PoliTweet,
+  CampusForSale,
+  Geopins,
+  Survvey,
   Concomp,
+  SickFit,
   TheHive
 ]
 
 const dribbleLinks = [
+  "",
   "",
   "",
   "https://dribbble.com/shots/6172154-D-D-Health-App",
@@ -55,28 +58,30 @@ const dribbleLinks = [
 const webLinks = [
   "",
   "",
+  "",
   "https://dd-health-app.herokuapp.com/",
+  "https://average-joes-nichols.netlify.com/",
   "",
-  "http://www.jackndemos.com/frontendSites/portfolio/",
   "",
-  "https://www.sigmachiumass.com",
-  "https://blogs.umass.edu/Techbytes/2015/10/26/hackumass-2015/",
-  "",
+  "https://my-react-app.jacknichols404.now.sh/",
+  "https://survvey-nichols.herokuapp.com/",
   "http://www.concussioncompetencies.com",
+  "https://sickfits-react-prod-nichols.herokuapp.com/",
   "http://www.thehivenet.org/"
 ]
 
 const githubLinks = [
   "https://github.com/fdo14",
   "https://github.com/fdo14",
-  "https://github.com/fdo14/dd-health-app",
   "https://github.com/fdo14/WifiChangerApp",
-  "https://github.com/fdo14/PortfolioTemplate",
-  "https://github.com/fdo14/twitch-clone",
-  "https://github.com/fdo14/sigma-chi",
-  "https://github.com/fdo14/campus-forsale",
+  "https://github.com/fdo14/dd-health-app",
+  "https://github.com/fdo14/average-joes",
   "https://github.com/fdo14/politweet",
+  "https://github.com/fdo14/campus-forsale",
+  "https://github.com/fdo14/GeoPins",
+  "https://github.com/fdo14/Survvey",
   "https://github.com/fdo14/ConcussionCompetencies",
+  "https://github.com/fdo14/SickFits",
   "https://github.com/fdo14/TheHive"
 ]
 
